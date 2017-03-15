@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var ding = (function() {
+    var tink = 5,
+        woof = function() {
+            return tink * 5;
+        },
+        zonk = function(){
+            document.getElementById('six').innerHTML += ' ' + woof();
+        },
+        mank = function(id){
+            if(id){document.getElementById(id).innerHTML += ' ' + woof(); return false;}
+            document.getElementById('nine').innerHTML += ' ' + woof();
+        };
+
+    return {
+        woof: function() {woof()},
+        zonk: function() {zonk()},
+        mank: function(id) {mank(id)}
+    }
+})();
+
+function pank(){document.getElementById('four').innerHTML = ding.woof()} //undefined
+function zank(){ding.zonk()} //works!
+
+window.onload = function() {
+    document.getElementById('one').innerHTML = ding.woof(); //undefined
+
+    document.getElementById('butty').onclick = function() {
+        document.getElementById('two').innerHTML = ding.woof(); //undefined
+        pank(); //undefined
+
+        var fink = ding.woof();
+        document.getElementById('three').innerHTML = fink; //undefined
+
+        zank(); //works!
+        document.getElementById('eight').innerHTML = ding.zonk(); //undefined
+    }
+
+    document.getElementById('five').innerHTML = ding.zonk(); //undefined
+    document.getElementById('seven').innerHTML = zank(); //undefined
+    ding.mank(); //works!
+    zank(); //works!
+    ding.mank('ten'); //works! trying with parameter
+}
+</script>
+</head>
+<body>
+    <input id="butty" type="button" value="hit me pls" />
+    <p>One: <span id="one"</p>
+    <p>Two: <span id="two"></span></p>
+    <p>Three: <span id="three"></span></p>
+    <p>Four: <span id="four"></span></p>
+    <p>Five: <span id="five"></span></p>
+    <p>Six: <span id="six"></span></p>
+    <p>Seven: <span id="seven"></span></p>
+    <p>Eight: <span id="eight"></span></p>
+    <p>Nine: <span id="nine"></span></p>
+    <p>Ten: <span id="ten"></span></p>
+</body>
+</html>
