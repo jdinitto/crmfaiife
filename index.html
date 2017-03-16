@@ -8,42 +8,63 @@ var ding = (function() {
             return tink * 5;
         },
         zonk = function(){
-            document.getElementById('six').innerHTML += ' ' + woof();
+            six.innerHTML += ' ' + woof();
         },
         mank = function(id){
             if(id){document.getElementById(id).innerHTML += ' ' + woof(); return false;}
-            document.getElementById('nine').innerHTML += ' ' + woof();
-        };
+            nine.innerHTML += ' ' + woof();
+        },
+        ponk = function(butt){
+            if (butt){return tink * 7}
+            return tink * 6;
+        }
 
     return {
         woof: function() {woof()},
         zonk: function() {zonk()},
-        mank: function(id) {mank(id)}
+        mank: function(id) {mank(id)},
+        ponk: function(butt) {return ponk(butt)}
     }
 })();
 
-function pank(){document.getElementById('four').innerHTML = ding.woof()} //undefined
+function pank(){four.innerHTML = ding.woof()} //undefined
 function zank(){ding.zonk()} //works!
 
 window.onload = function() {
-    document.getElementById('one').innerHTML = ding.woof(); //undefined
+    var butty = document.getElementById('butty'),
+        one = document.getElementById('one'),
+        two = document.getElementById('two'),
+        three = document.getElementById('three'),
+        four = document.getElementById('four'),
+        five = document.getElementById('five'),
+        six = document.getElementById('six'),
+        seven = document.getElementById('seven'),
+        eight = document.getElementById('eight'),
+        nine = document.getElementById('nine'),
+        ten = document.getElementById('ten'),
+        eleven = document.getElementById('eleven'),
+        twelve = document.getElementById('twelve');
 
-    document.getElementById('butty').onclick = function() {
-        document.getElementById('two').innerHTML = ding.woof(); //undefined
+    one.innerHTML = ding.woof(); //undefined
+
+    butty.onclick = function() {
+        two.innerHTML = ding.woof(); //undefined
         pank(); //undefined
 
         var fink = ding.woof();
-        document.getElementById('three').innerHTML = fink; //undefined
+        three.innerHTML = fink; //undefined
 
         zank(); //works!
-        document.getElementById('eight').innerHTML = ding.zonk(); //undefined
+        eight.innerHTML = ding.zonk(); //undefined
+        twelve.innerHTML += ' ' + ding.ponk(true); //works!
     }
 
-    document.getElementById('five').innerHTML = ding.zonk(); //undefined
-    document.getElementById('seven').innerHTML = zank(); //undefined
+    five.innerHTML = ding.zonk(); //undefined
+    seven.innerHTML = zank(); //undefined
     ding.mank(); //works!
     zank(); //works!
     ding.mank('ten'); //works! trying with parameter
+    eleven.innerHTML = ding.ponk(); //works!
 }
 </script>
 </head>
@@ -59,5 +80,7 @@ window.onload = function() {
     <p>Eight: <span id="eight"></span></p>
     <p>Nine: <span id="nine"></span></p>
     <p>Ten: <span id="ten"></span></p>
+    <p>Eleven: <span id="eleven"></span></p>
+    <p>Twelve: <span id="twelve"></span></p>
 </body>
 </html>
