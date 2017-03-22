@@ -12,5 +12,7 @@ THe third way is preferable (to me), since it works both onload and on a post-lo
 
 I added a new method that better accomplishes what I wanted, called `ponk`. It's pretty simple, as it returns the function expression inside the IIFE. It writes to the DOM at the `window.onload` event, and on the button press. Huzzah! [This post by Ben Alman](http://benalman.com/news/2010/11/immediately-invoked-function-expression/) on IIFEs really cleared things up for me.
 
+[Check it out in action here](https://jdinitto.github.io/crmfaiife)
+
 # To Do
 - [x] Research and find a better explanation.
